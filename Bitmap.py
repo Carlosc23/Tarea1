@@ -1,6 +1,7 @@
+import random
 import struct
 from math import ceil
-
+from random import randint
 import math
 
 
@@ -43,7 +44,7 @@ class Bitmap(object):
             for y in range(self.height)
         ]
 
-    def glViewPort(self,x, y, width, height):
+    def glViewPort(self, x, y, width, height):
         if height <= 0 or width <= 0:
             print('Height and width must be positives')
             input()
@@ -56,7 +57,7 @@ class Bitmap(object):
             self.vpY = y
 
     def glClear(self):
-        self.pixels= [
+        self.pixels = [
             [
                 # show background color
                 color(self.r, self.g, self.b) for x in range(self.width)
@@ -64,8 +65,8 @@ class Bitmap(object):
             for y in range(self.height)
         ]
 
-    def glClearColor(self,r, g, b):
-        self.r =  ceil(r * 255)
+    def glClearColor(self, r, g, b):
+        self.r = ceil(r * 255)
         self.g = ceil(g * 255)
         self.b = ceil(b * 255)
 
@@ -152,8 +153,26 @@ class Bitmap(object):
         for x in range(padding, self.vpWidth - padding):
             self.point(x, y)
 
+    def diagonal(self):
+        for cord in range(self.vpX, self.vpWidth):
+            self.point(cord, cord)
 
+    def random_point(self):
+        whiteColor = [255, 255, 255]
+        blackColor = [0, 0, 0]
+        for y in range(self.height):
+            for x in range(self.width):
+                self.glColor(*random.choice([whiteColor, blackColor]))
+                self.point(x, y, color(self.vr, self.vg, self.vb))
 
-#r = Bitmap(600, 400)
-#r.write('out.bmp')
-#r.point(100, 200, color(255, 255, 0))
+    def random_point_color(self):
+        whiteColor = [255, 255, 255]
+        blackColor = [0, 0, 0]
+        for y in range(self.height):
+            for x in range(self.width):
+                self.glColor(randint(0, 255), randint(0, 255), randint(0, 255))
+                self.point(x, y, color(self.vr, self.vg, self.vb))
+
+# r = Bitmap(600, 400)
+# r.write('out.bmp')
+# r.point(100, 200, color(255, 255, 0))

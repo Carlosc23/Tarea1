@@ -1,5 +1,5 @@
 import struct
-from random import randint
+from random import randint, random
 
 from math import ceil
 from Bitmap import *
@@ -34,7 +34,8 @@ class software_render(object):
 
     def glFinish(self):
         self.window.write(self.filename)
-    def square(self,size):
+
+    def square(self, size):
         self.window.square(size)
 
     # draw left line
@@ -53,3 +54,11 @@ class software_render(object):
     def drawBottonLine(self, padding):
         self.window.drawBottonLine(padding)
 
+    def diagonal(self):
+        self.window.diagonal()
+
+    def random_point(self):
+        self.window.random_point()
+
+    def random_point_color(self):
+        self.window.random_point_color()

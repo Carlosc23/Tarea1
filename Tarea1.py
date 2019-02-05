@@ -77,3 +77,33 @@ while option != 9:
         x.drawBottonLine(10)
         x.drawRightLine(10)
         x.glFinish()
+
+    elif option == "5":
+        x.glCreateWindow(400, 400)
+        x.glClearColor(0, 0, 0)
+        x.glClear()
+        x.glViewPort(0, 0, 400, 400)
+        x.glColor(255, 255, 255)
+        x.diagonal()
+        x.glFinish()
+
+    elif option == "6":
+        x.glCreateWindow(400, 400)
+        x.glClearColor(0, 0, 0)
+        x.glClear()
+        x.glViewPort(0, 0, 400, 400)
+        x.glColor(255, 255, 255)
+        x.random_point()
+        x.glFinish()
+
+    elif option == "7":
+        x.glCreateWindow(400, 400)
+        x.glClearColor(0, 0, 0)
+        x.glClear()
+        x.glViewPort(0, 0, 400, 400)
+        x.glColor(255, 255, 255)
+        x.random_point_color()
+        x.glFinish()
+
+    elif option == "8":
+        pass
