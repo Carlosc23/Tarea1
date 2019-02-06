@@ -5,6 +5,8 @@
 # Define variables
 from random import randint
 
+import numpy as np
+
 from SR1 import software_render
 
 option = 0
@@ -106,4 +108,64 @@ while option != 9:
         x.glFinish()
 
     elif option == "8":
-        pass
+        x.glCreateWindow(400, 400)
+        x.glClearColor(0, 0, 0)
+        x.glClear()
+        x.glViewPort(0, 0, 395, 395)
+        x.glColor(255, 255, 255)
+        x.sky(100)
+        x.glFinish()
+
+    elif option == "9":
+        x.glCreateWindow(160, 192)
+        x.glClearColor(0, 0, 0)
+        x.glClear()
+        x.glViewPort(0, 0, 160, 192)
+        x.glColor(255, 255, 255)
+
+        x.glVertex(0, 1)
+        x.glVertex(0, 0.9)
+        #x.glVertex(0, 0.8)
+        x.glVertex(0, 0.7)
+        x.glVertex(0, 0.6)
+        #x.glVertex(0, 0.5)
+
+        x.glVertex(0, 0.4)
+        x.glVertex(0, 0.3)
+        # x.glVertex(0, 0.2)
+        x.glVertex(0, 0.1)
+        x.glVertex(0, 0)
+
+        x.glVertex(0, -0.3)
+        x.glVertex(0, -0.4)
+        #x.glVertex(0, -0.5)
+        x.glVertex(0, -0.6)
+        x.glVertex(0, -0.7)
+        #x.glVertex(0, -0.8)
+        x.glVertex(0, -0.9)
+        x.glVertex(0, -1)
+        #x.glVertex(0, -1.1)
+        #x.glVertex(0, -1.2)
+        #x.glVertex(0, -1.3)
+        #x.glVertex(0, -1.4)
+
+
+        for i in np.arange(-.5, -0.2, 0.02):
+            x.glVertex(-1, i,   5)
+        # ----------
+        for i in np.arange(0.3, 0.6, 0.02):
+            x.glVertex(0.95, i,   5)
+        """
+        x.glVertex(1, 0)
+        x.glVertex(1, 0.02)
+        x.glVertex(1, 0.04)
+        x.glVertex(1, 0.06)
+        x.glVertex(1, 0.08)
+        x.glVertex(1, 0.1)
+        x.glVertex(1, 0.12)
+        x.glVertex(1, 0.14)
+        """
+        # -------------
+        x.glVertex(0.5, 0.5)
+        # img.square(100)
+        x.glFinish()

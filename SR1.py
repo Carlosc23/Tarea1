@@ -26,8 +26,8 @@ class software_render(object):
     def glClearColor(self, r, g, b):
         self.window.glClearColor(r, g, b)
 
-    def glVertex(self, x, y):
-        self.window.glVertex(x, y)
+    def glVertex(self, x, y,pointSize=10):
+        self.window.glVertex(x, y,pointSize)
 
     def glColor(self, r, g, b):
         self.window.glColor(r, g, b)
@@ -62,3 +62,6 @@ class software_render(object):
 
     def random_point_color(self):
         self.window.random_point_color()
+
+    def sky(self,stars):
+        self.window.sky(stars)

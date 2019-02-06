@@ -70,8 +70,8 @@ class Bitmap(object):
         self.g = ceil(g * 255)
         self.b = ceil(b * 255)
 
-    def glVertex(self, x, y):
-        pointSize = 10
+    def glVertex(self, x, y,pointSize=10):
+
         if self.vpHeight != 0 or self.vpWidth != 0:
             xx = x * ((self.vpWidth - pointSize) / 2)
             yy = y * ((self.vpHeight - pointSize) / 2)
@@ -172,6 +172,20 @@ class Bitmap(object):
             for x in range(self.width):
                 self.glColor(randint(0, 255), randint(0, 255), randint(0, 255))
                 self.point(x, y, color(self.vr, self.vg, self.vb))
+
+    def sky(self, stars):
+        loop = 0
+        while (loop < stars):
+            loop = loop + 1
+            size = randint(1, 3)
+            x = randint(0, self.vpWidth - size - 2)
+            y = randint(0, self.vpHeight - size - 2)
+            self.printStar(x, y, size)
+
+    def printStar(self, x, y, size):
+        for cordX in range(size):
+            for cordY in range(size):
+                self.point(cordX + x, cordY + y)
 
 # r = Bitmap(600, 400)
 # r.write('out.bmp')
