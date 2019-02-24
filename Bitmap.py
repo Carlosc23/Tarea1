@@ -1,6 +1,7 @@
 # Carlos Calderon, 15219
 # Bitmap.py
 # Inspired in the class render made in Graphics Course C3044
+import random
 import struct
 import sys
 
@@ -84,7 +85,7 @@ class Bitmap(object):
         :param b: amount of blue
         :return:
         """
-        if 0 < r < 1 or 0 < g < 1 or 0 < b < 1:
+        if 0 <= r <= 1 or 0 <= g <= 1 or 0 <= b <= 1:
             self.r = ceil(r * 255)
             self.g = ceil(g * 255)
             self.b = ceil(b * 255)
@@ -129,7 +130,7 @@ class Bitmap(object):
         :param b: amount of b
         :return:
         """
-        if 0 < r < 1 or 0 < g < 1 or 0 < b < 1:
+        if 0 <= r <= 1 or 0 <= g <= 1 or 0 <= b <= 1:
             self.vr = ceil(r * 255)
             self.vg = ceil(g * 255)
             self.vb = ceil(b * 255)
@@ -182,6 +183,67 @@ class Bitmap(object):
         """
         self.pixels[y][x] = color
 
+    def square(self, size):
+        cordx = int((self.vpWidth / 2)) - int(size / 2)
+        cordy = int((self.vpWidth / 2)) - int(size / 2)
+        for x in range(cordx, cordx + size):
+            for y in range(cordy, cordy + size):
+                self.point(x, y)
+
+    def drawLeftLine(self, padding):
+        x = padding
+        for y in range(padding, self.vpHeight - padding):
+            self.point(x, y)
+
+    def drawRightLine(self, padding):
+        x = self.vpWidth - padding
+        for y in range(padding, self.vpHeight - padding):
+            self.point(x, y)
+
+    def drawTopLine(self, padding):
+        y = padding
+        for x in range(padding, self.vpWidth - padding):
+            self.point(x, y)
+
+    def drawBottomLine(self, padding):
+        y = self.vpHeight - padding
+        for x in range(padding, self.vpWidth - padding):
+            self.point(x, y)
+
+    def diagonal(self):
+        for cord in range(self.vpX, self.vpWidth):
+            self.point(cord, cord)
+
+    def random_point(self):
+        whiteColor = [1, 1, 1]
+        blackColor = [0, 0, 0]
+        for y in range(self.height):
+            for x in range(self.width):
+                self.glColor(*random.choice([whiteColor, blackColor]))
+                self.point(x, y, color(self.vr, self.vg, self.vb))
+
+    def random_point_color(self):
+
+        for y in range(self.height):
+            for x in range(self.width):
+                list_random = [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
+                list_random_norm = [float(i) / 255 for i in list_random]
+                self.glColor(list_random_norm[0], list_random_norm[1], list_random_norm[2])
+                self.point(x, y, color(self.vr, self.vg, self.vb))
+
+    def sky(self, stars):
+        counter = 0
+        while counter < stars:
+            counter += 1
+            size = random.randint(1, 3)
+            x = random.randint(0, self.vpWidth - size - 2)
+            y = random.randint(0, self.vpHeight - size - 2)
+            self.printStar(x, y, size)
+
+    def printStar(self, x, y, size):
+        for cordX in range(size):
+            for cordY in range(size):
+                self.point(cordX + x, cordY + y)
 # r = Bitmap(600, 400)
 # r.write('out.bmp')
 # r.point(100, 200, color(255, 255, 0))

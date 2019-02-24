@@ -86,4 +86,38 @@ class SoftwareRender(object):
         """
         self.window.write(self.filename)
 
+    def square(self, size):
+        self.window.square(size)
+
+        # draw left line
+
+    def drawLeftLine(self, padding):
+        self.window.drawLeftLine(padding)
+
+        # draw rigth line
+
+    def drawRightLine(self, padding):
+        self.window.drawRightLine(padding)
+
+        # draw top line
+
+    def drawTopLine(self, padding):
+        self.window.drawTopLine(padding)
+
+        # draw botton line
+
+    def drawBottomLine(self, padding):
+        self.window.drawBottomLine(padding)
+
+    def diagonal(self):
+        self.window.diagonal()
+
+    def random_point(self):
+        self.window.random_point()
+
+    def random_point_color(self):
+        self.window.random_point_color()
+
+    def sky(self, stars):
+        self.window.sky(stars)
     
