@@ -7,10 +7,10 @@ from random import randint
 
 import numpy as np
 
-from SR1 import software_render
+from SR1 import SoftwareRender
 
 option = 0
-x = software_render('image.bmp')
+x = SoftwareRender('image.bmp')
 
 
 def menu():
@@ -19,7 +19,7 @@ def menu():
            'de este proyecto \n\n' \
            '-----------------------------------------------------------------------------------------------------' \
            '-------------------------------\n' \
-           '1. Por renderizar <una imagen negra con un punto blanco en una ubicación random dentro de la imagen.\n' \
+           '1. Por renderizar una imagen negra con un punto blanco en una ubicación random dentro de la imagen.\n' \
            '2. Por renderizar una imagen negra con un punto blanco en cada esquina\n' \
            '3. Por renderizar un cubo de 100 pixeles en el centro de su imagen\n' \
            '4. Por renderizar líneas blancas en toda la orilla de su imagen (4 lineas) \n' \
@@ -36,23 +36,23 @@ def menu():
 
 while option != 9:
     print(menu())
-    option = input('Ingrese una opción')
+    option = input('Ingrese una opción: ')
 
     if option == '1':
         x.glCreateWindow(700, 700)
         x.glClearColor(0, 0, 0)
         x.glClear()
         x.glViewPort(200, 200, 200, 200)
-        x.glColor(0, 255, 255)
+        x.glColor(1, 1, 1)
         x.glVertex(randint(-1, 1), randint(-1, 1))
         x.glFinish()
 
     elif option == "2":
-        x.glCreateWindow(700, 700)
+        x.glCreateWindow(200, 200)
         x.glClearColor(0, 0, 0)
         x.glClear()
-        x.glViewPort(200, 200, 200, 200)
-        x.glColor(255, 255, 255)
+        x.glViewPort(0, 0, 200, 200)
+        x.glColor(1, 1, 1)
         x.glVertex(-1, 1)
         x.glVertex(-1, -1)
         x.glVertex(1, -1)
@@ -64,7 +64,7 @@ while option != 9:
         x.glClearColor(0, 0, 0)
         x.glClear()
         x.glViewPort(0, 0, 700, 700)
-        x.glColor(255, 255, 255)
+        x.glColor(1, 1, 1)
         x.square(100)
         x.glFinish()
 
@@ -73,10 +73,10 @@ while option != 9:
         x.glClearColor(0, 0, 0)
         x.glClear()
         x.glViewPort(0, 0, 400, 400)
-        x.glColor(255, 255, 255)
+        x.glColor(1, 1, 1)
         x.drawLeftLine(10)
         x.drawTopLine(10)
-        x.drawBottonLine(10)
+        x.drawBottomLine(10)
         x.drawRightLine(10)
         x.glFinish()
 
@@ -85,7 +85,7 @@ while option != 9:
         x.glClearColor(0, 0, 0)
         x.glClear()
         x.glViewPort(0, 0, 400, 400)
-        x.glColor(255, 255, 255)
+        x.glColor(1, 1, 1)
         x.diagonal()
         x.glFinish()
 
@@ -94,7 +94,7 @@ while option != 9:
         x.glClearColor(0, 0, 0)
         x.glClear()
         x.glViewPort(0, 0, 400, 400)
-        x.glColor(255, 255, 255)
+        x.glColor(1, 1, 1)
         x.random_point()
         x.glFinish()
 
@@ -103,7 +103,7 @@ while option != 9:
         x.glClearColor(0, 0, 0)
         x.glClear()
         x.glViewPort(0, 0, 400, 400)
-        x.glColor(255, 255, 255)
+        x.glColor(1, 1, 1)
         x.random_point_color()
         x.glFinish()
 
@@ -112,7 +112,7 @@ while option != 9:
         x.glClearColor(0, 0, 0)
         x.glClear()
         x.glViewPort(0, 0, 395, 395)
-        x.glColor(255, 255, 255)
+        x.glColor(1, 1, 1)
         x.sky(100)
         x.glFinish()
 
@@ -121,7 +121,7 @@ while option != 9:
         x.glClearColor(0, 0, 0)
         x.glClear()
         x.glViewPort(0, 0, 160, 192)
-        x.glColor(255, 255, 255)
+        x.glColor(1, 1, 1)
 
         x.glVertex(0, 1)
         x.glVertex(0, 0.9)
@@ -151,10 +151,10 @@ while option != 9:
 
 
         for i in np.arange(-.5, -0.2, 0.02):
-            x.glVertex(-1, i,   5)
+            x.glVertex(-1, i)
         # ----------
         for i in np.arange(0.3, 0.6, 0.02):
-            x.glVertex(0.95, i,   5)
+            x.glVertex(0.95, i)
         """
         x.glVertex(1, 0)
         x.glVertex(1, 0.02)
@@ -167,5 +167,11 @@ while option != 9:
         """
         # -------------
         x.glVertex(0.5, 0.5)
-        # img.square(100)
+
+
+        for i in np.arange(-1,1,0.01):
+            x.glVertex(i,1)
+
+        for i in np.arange(-1,1,0.01):
+            x.glVertex(i,-1)
         x.glFinish()
